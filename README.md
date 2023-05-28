@@ -38,3 +38,4 @@ References
 
 - Expo documentation: https://docs.expo.dev/
 - Feature requests: https://github.com/Weysan/PerfTracking/issues
+- Movement documentation: https://www.crossfit.com/
