@@ -28,10 +28,21 @@ Start the project
 use
 
 ```
-npx expo start
+make start
 ```
 
 It will start the server on the laptop. In order to test it on a iOS phone, please download the app `Expo Go`, and then you can scan the QR code provided in the command line interface, or you could be connected to the same network as the laptop and then it would automatically detect the project and you can then launch the application.
+
+Run unit tests
+---
+
+use
+
+```
+make test
+```
+
+it will run the unit test files from the project. Test file are named the same file name as the one being tested for example: `index.js` would have `index.test.js` to write the tests.
 
 References
 ---
