@@ -1,4 +1,4 @@
-import { SafeAreaView, FlatList, Button, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, FlatList, Button, StyleSheet, View } from 'react-native';
 import {MOVEMENT_LIST} from './../src/constants'
 
 export default function HomeScreen({ navigation }) {
