@@ -1,28 +1,38 @@
+import React from 'react';
 import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
 import {GetCurrentPerformance} from './../src/helper'
+import {getPerformanceHistory} from './../src/storeHelper'
 
-export default function MovementDetailsScreen({route}) {
+export default function MovementDetailsScreen({route, navigation}) {
+    const [performance, setPerformance] = React.useState([]);
     // Get the parameters from the route
-    const { description, link } = route.params;
+    const { title, description, link } = route.params;
 
-    const PERFORMANCE_HISTORY_DUMMY = [
-        {date: '2023-01-01 19:41:30', performance: '100', unit:'kg'},
-        {date: '2022-09-01 19:41:30', performance: '95', unit:'kg'},
-    ];
+    getPerformanceHistory(title).then((data) => { if (data) { setPerformance(data) } });
 
-    let curPerformance = GetCurrentPerformance(PERFORMANCE_HISTORY_DUMMY);
+    let curPerformance = GetCurrentPerformance(performance);
 
+    currentPerformanceRender = null
+    if (curPerformance !== null) {
+        currentPerformanceRender = <Text style={styles.title}>Current Performance: {curPerformance.weight} {curPerformance.unit}</Text>;
+    }
+ 
+    historyRender = null;
+    if (performance.length) {
+        historyRender = <Text style={styles.title}>Performance History</Text>;
+    }
+    
     return (
         <View style={styles.container}>
             <Text style={styles.description}>{description}</Text>
             <Text style={styles.link}>More details: {link}</Text>
-            <Text style={styles.title}>Current Performance: {curPerformance.performance} {curPerformance.unit}</Text>
-            <Text style={styles.title}>Performance History</Text>
+            {currentPerformanceRender}
+            {historyRender}
             <FlatList
-                data={PERFORMANCE_HISTORY_DUMMY}
-                renderItem={({item}) => <Text style={styles.listItem}>- {item.date}: {item.performance} {item.unit}</Text>}
+                data={performance}
+                renderItem={({item}) => { perfDate = new Date(item.date); return(<Text style={styles.listItem}>- {perfDate.toLocaleString()}: {item.weight} {item.unit}</Text>)}}
             />
-            <Button title="Add a new performance" onPress={() => console.log('click')}/>
+            <Button title="Add a new performance" onPress={() => navigation.navigate('AddPerformance', {"type":title})}/>
         </View>
     );
 }

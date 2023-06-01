@@ -1,7 +1,7 @@
 export function GetCurrentPerformance(performanceList) {
-    let curPerformance = {date:'', performance:'', unit:''};
+    let curPerformance = null;
     for (let i = 0; i < performanceList.length; i++) {
-        if (curPerformance.date <= performanceList[i].date) {
+        if (curPerformance === null || curPerformance.date <= performanceList[i].date) {
             curPerformance = performanceList[i];
         }
     }

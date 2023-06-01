@@ -7,6 +7,7 @@ import HomeScreen from './screens/Home';
 import MovementDetailsScreen from './screens/MovementDetails';
 import FeedbackScreen from './screens/Feedback';
 import CalculationScreen from './screens/Calculation';
+import AddPerformanceScreen from './screens/AddPerformance';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -16,6 +17,7 @@ function MainStack() {
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Performance Tracking' }} />
       <Stack.Screen name="Details" component={MovementDetailsScreen} options={({ route }) => ({ title: route.params.title })} />
+      <Stack.Screen name="AddPerformance" component={AddPerformanceScreen} options={{ title: 'Add a performance' }} />
     </Stack.Navigator>
   );
 }
