@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, TextInput, Keyboard, TouchableWithoutFeedback, FlatList, Switch } from 'react-native';
 import {GetBBPlatesCount} from './../src/helper'
+import Separator from './../src/components/Separator'
 
 export default function CalculationScreen({ }) {
     const [weight, onChangeText] = React.useState('100');
@@ -36,6 +37,7 @@ export default function CalculationScreen({ }) {
                     <Text style={styles.inlineInput}>%</Text>
                 </View>
                 <Text style={styles.result}>Result: {result} kg</Text>
+                <Separator />
                 <Switch
                 style={{ marginTop: 30 }}
                 onValueChange={onChangeBarChange}
@@ -58,13 +60,14 @@ const styles = StyleSheet.create({
       margin: 12,
       borderWidth: 1,
       padding: 10,
+      width: 60,
     },
     inlineInput: {
         paddingTop: 15,
         fontSize: 30,
     },
     result: {
-        paddingTop: 50,
+        paddingTop: 30,
         fontSize: 30,
     },
     plates: {

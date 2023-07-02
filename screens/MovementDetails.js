@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
 import {GetCurrentPerformance} from './../src/helper'
 import {getPerformanceHistory} from './../src/storeHelper'
+import EmptyStatePerformance from './../src/components/EmptyStatePerformance'
+import Separator from './../src/components/Separator'
 
 export default function MovementDetailsScreen({route, navigation}) {
     const [performance, setPerformance] = React.useState([]);
@@ -12,9 +14,9 @@ export default function MovementDetailsScreen({route, navigation}) {
 
     let curPerformance = GetCurrentPerformance(performance);
 
-    currentPerformanceRender = null
+    currentPerformanceRender = <EmptyStatePerformance />
     if (curPerformance !== null) {
-        currentPerformanceRender = <Text style={styles.title}>Current Performance: {curPerformance.weight} {curPerformance.unit}</Text>;
+        currentPerformanceRender = <Text style={styles.titleCurrent}>Current Performance: {curPerformance.weight} {curPerformance.unit}</Text>;
     }
  
     historyRender = null;
@@ -27,17 +29,22 @@ export default function MovementDetailsScreen({route, navigation}) {
             <Text style={styles.description}>{description}</Text>
             <Text style={styles.link}>More details: {link}</Text>
             {currentPerformanceRender}
+            <Separator />
             {historyRender}
             <FlatList
                 data={performance}
                 renderItem={({item}) => { perfDate = new Date(item.date); return(<Text style={styles.listItem}>- {perfDate.toLocaleString()}: {item.weight} {item.unit}</Text>)}}
             />
-            <Button title="Add a new performance" onPress={() => navigation.navigate('AddPerformance', {"type":title})}/>
+            <Button title="Log a new performance" onPress={() => navigation.navigate('AddPerformance', {"type":title})}/>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    titleCurrent: {
+        fontSize: 30,
+        paddingTop: 20,
+    },
     title: {
         fontSize: 30,
     },
