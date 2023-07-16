@@ -19,7 +19,7 @@ export function GetGraphPerformances(performanceList, numberMonth, year) {
         }
     }
     if (subsetPerformanceForMonth.length) {
-        return subsetPerformanceForMonth[subsetPerformanceForMonth.length -1].weight;
+        return parseFloat(subsetPerformanceForMonth[subsetPerformanceForMonth.length -1].weight);
     }
     return 0
 }

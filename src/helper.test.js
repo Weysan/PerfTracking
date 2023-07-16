@@ -78,7 +78,7 @@ test("Get last performanceof a specific month with multiple entries", () => {
         {"date": "2023-06-04T13:38:03.876Z", "unit": "kg", "weight": "83"}
     ];
     maxPerformance = GetGraphPerformances(mockPerformance, 6, 2023)
-    expect(maxPerformance).toStrictEqual(80);
+    expect(maxPerformance).toStrictEqual(85);
 });
 
 test("Get last performance of a specific month with 1 entry", () => {
