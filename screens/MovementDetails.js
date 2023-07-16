@@ -3,7 +3,6 @@ import { Button, FlatList, StyleSheet, Text, View, Pressable } from 'react-nativ
 import {GetCurrentPerformance} from './../src/helper'
 import {getPerformanceHistory} from './../src/storeHelper'
 import EmptyStatePerformance from './../src/components/EmptyStatePerformance'
-import Separator from './../src/components/Separator'
 import MonthlyChart from './../src/components/MonthlyChart'
 
 export default function MovementDetailsScreen({route, navigation}) {
