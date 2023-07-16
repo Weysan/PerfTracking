@@ -8,6 +8,22 @@ export function GetCurrentPerformance(performanceList) {
     return curPerformance;
 }
 
+export function GetGraphPerformances(performanceList, numberMonth, year) {
+    subsetPerformanceForMonth = []
+    for (let i = 0; i < performanceList.length; i++) {
+        if (performanceList[i]) {
+            let date = new Date(performanceList[i].date)
+            if (date.getMonth() == numberMonth && date.getFullYear() == year) {
+                subsetPerformanceForMonth.push(performanceList[i])
+            }
+        }
+    }
+    if (subsetPerformanceForMonth.length) {
+        return subsetPerformanceForMonth[subsetPerformanceForMonth.length -1].weight;
+    }
+    return 0
+}
+
 export function GetBBPlatesCount(weightInKg, weightBBInKg) {
     // format weightInKg from comma with .
     let plateCount = []

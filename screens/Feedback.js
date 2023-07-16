@@ -11,6 +11,8 @@ export default function FeedbackScreen({ navigation }) {
                     numberOfLines={4}
                  />
                  <Button title="Send" onPress={() => console.log('click')} />
+
+                 <Text>Information: We are currently not storing any information online. Everything is local and stored in your phone.</Text>
             </View>
         </SafeAreaView>
     );

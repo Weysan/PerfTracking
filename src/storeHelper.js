@@ -8,7 +8,6 @@ export async function storePerformance(movementType, weightInKg) {
         }
         initData.push(getObjectToStore(weightInKg))
         try {
-            console.log(initData)
             realKey = '@' + movementType
             const jsonValue = JSON.stringify(initData)
             AsyncStorage.setItem(realKey, jsonValue)

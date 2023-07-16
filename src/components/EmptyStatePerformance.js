@@ -3,20 +3,20 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function EmptyStatePerformance() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>No performance logged!</Text>
+        <View style={styles.containerEmpty}>
+            <Text style={styles.textEmtpy}>No performance logged!</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
+    containerEmpty: {
+      padding: 20,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
     },
-    text: {
+    textEmtpy: {
         fontStyle: 'italic',
     },
 });
